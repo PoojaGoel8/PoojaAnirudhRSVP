@@ -32,11 +32,11 @@ body {
 }
 img { max-width: 100%; display: block; }
 /* Art has pure-white paper; multiply lets the page colour show through. */
-.corner, .skyline, .sprig, .device__flowers, .device__skyline { mix-blend-mode: multiply; }
+.corner, .skyline { mix-blend-mode: multiply; }
 p { margin: 0; }
 
 /* Watercolour paper texture made from soft washes */
-.hero, .card, .share {
+.hero, .card {
   background:
     radial-gradient(60% 40% at 20% 55%, rgba(200, 212, 220, .28), transparent 70%),
     radial-gradient(50% 35% at 80% 50%, rgba(205, 214, 222, .25), transparent 70%),
@@ -246,70 +246,6 @@ p { margin: 0; }
 
 .hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
-/* ---------- SHARE / QR ---------- */
-.share { padding: clamp(56px, 9vw, 110px) 16px; position: relative; overflow: hidden; }
-.share__inner {
-  max-width: 960px; margin: 0 auto;
-  display: grid; grid-template-columns: auto 1fr; gap: clamp(32px, 7vw, 96px); align-items: center;
-}
-.share__text { position: relative; text-align: center; }
-.sprig { position: absolute; right: -10px; top: 10%; width: 90px; opacity: .95; }
-.qr {
-  width: 188px; height: 188px; margin: 22px auto 18px;
-  padding: 14px; background: #fff;
-  border: 1px solid var(--line); border-radius: 12px;
-  box-shadow: 0 10px 30px -18px rgba(86, 64, 48, .4);
-  position: relative;
-}
-.qr svg { width: 100%; height: 100%; display: block; }
-.qr__heart {
-  position: absolute; inset: 0; margin: auto;
-  width: 40px; height: 40px; border-radius: 8px; background: #fff;
-  display: grid; place-items: center; color: var(--gold);
-}
-.qr__heart svg { width: 26px; height: 26px; }
-.share__or { font-size: .9rem; color: var(--ink); margin-bottom: 12px; }
-.link-pill {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 10px 22px; border-radius: 999px;
-  border: 1px solid var(--line); background: var(--field);
-  color: var(--ink); text-decoration: none; font-size: .9rem;
-  max-width: 100%; overflow-wrap: anywhere;
-}
-.link-pill svg { width: 18px; height: 18px; color: var(--maroon); flex: none; }
-.link-pill:hover { border-color: var(--maroon-line); }
-.script-line { font-family: var(--script); font-size: 1.9rem; color: var(--names); margin: 26px 0 6px; }
-
-/* Phone mockup */
-.device {
-  width: 260px; aspect-ratio: 9 / 17;
-  padding: 10px; border-radius: 42px;
-  background: #1d1b1a;
-  box-shadow: 0 30px 60px -28px rgba(0,0,0,.55), inset 0 0 0 2px #3a3634;
-  position: relative;
-}
-.device::before {
-  content: ""; position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
-  width: 84px; height: 22px; border-radius: 14px; background: #1d1b1a; z-index: 3;
-}
-.device__screen {
-  position: relative; height: 100%; border-radius: 33px; overflow: hidden;
-  background: var(--paper);
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  padding-top: 40px;
-}
-.device__flowers { position: absolute; top: 0; left: 0; width: 72px; }
-.device__flowers--r { left: auto; right: 0; }
-.device__top {
-  width: 100%; height: 118px;
-  background-size: 260% auto; background-position: 50% 10%; background-repeat: no-repeat;
-}
-.device__names { font-family: var(--script); font-size: 2rem; color: var(--names); margin-top: 18px; }
-.device__date { font-family: var(--serif); font-weight: 700; text-transform: uppercase; letter-spacing: .18em; font-size: .56rem; color: var(--ink); margin: 6px 0 12px; }
-.device__btn { margin-bottom: 18px; background: var(--maroon); color: #fff; font-size: .55rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; border-radius: 999px; padding: 7px 18px; }
-.device__skyline { margin-top: auto; width: 100%; }
-.device__cities { font-family: var(--serif); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: .42rem; color: var(--ink); padding: 6px 0 14px; }
-
 /* ---------- FOOTER ---------- */
 .footer { text-align: center; padding: 40px 16px 56px; }
 .footer__names { font-family: var(--script); font-size: 2.2rem; color: var(--names); }
@@ -324,9 +260,6 @@ p { margin: 0; }
   .card { padding-bottom: 110px; }
   .stepper { margin-bottom: 34px; }
   .step__label { font-size: .64rem; }
-  .share__inner { grid-template-columns: 1fr; justify-items: center; }
-  .device { width: 220px; order: 2; }
-  .sprig { width: 64px; right: -6px; }
   .eyebrow { letter-spacing: .22em; font-size: .72rem; }
   .eyebrow--strong { font-size: .74rem; }
   .cities__row, .cities--inline { gap: 8px; letter-spacing: .2em; font-size: .68rem; }

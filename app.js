@@ -130,27 +130,5 @@
     f[k].addEventListener("input", () => setError(k))
   );
 
-  // ---------- QR code + share link ----------
-  const pageUrl = location.origin + location.pathname.replace(/index\.html$/, "");
-  const rsvpUrl = pageUrl + "#rsvp";
-  const shareLink = document.getElementById("share-link");
-  shareLink.href = rsvpUrl;
-  document.getElementById("share-url").textContent =
-    location.protocol.startsWith("http") ? rsvpUrl.replace(/^https?:\/\/(www\.)?/, "") : "ourwedding.com/rsvp";
-
-  const qrBox = document.getElementById("qr");
-  if (window.qrcode) {
-    const qr = qrcode(0, "H");
-    qr.addData(rsvpUrl);
-    qr.make();
-    qrBox.innerHTML =
-      qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true }) +
-      '<span class="qr__heart"><svg><use href="#heart"/></svg></span>';
-    const svg = qrBox.querySelector("svg");
-    svg.querySelectorAll("path, rect").forEach((el) => {
-      if (el.getAttribute("fill") === "black" || el.getAttribute("fill") === "#000000") el.setAttribute("fill", "#2b2522");
-    });
-  }
-
   show(1, { scroll: false });
 })();
