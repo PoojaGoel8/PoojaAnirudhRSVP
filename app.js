@@ -130,5 +130,15 @@
     f[k].addEventListener("input", () => setError(k))
   );
 
+  // ---------- views ----------
+  // The invitation is the landing page; #rsvp swaps it for the RSVP card.
+  function setView() {
+    const rsvp = location.hash === "#rsvp";
+    document.body.classList.toggle("view-rsvp", rsvp);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+  window.addEventListener("hashchange", setView);
+  setView();
+
   show(1, { scroll: false });
 })();
