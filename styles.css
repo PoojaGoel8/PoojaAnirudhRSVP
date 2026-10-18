@@ -111,13 +111,14 @@ p { margin: 0; }
 
 .hero__scene {
   position: relative;
-  width: min(1100px, 112vw);
+  width: 100vw;
+  flex: none;
   margin-top: auto;
   padding-top: 24px;
 }
 .skyline { width: 100%; height: auto; margin: 0 auto; }
-.corner--bl { left: -2%; bottom: -6%; width: clamp(110px, 18%, 220px); }
-.corner--br { right: -2%; bottom: -6%; width: clamp(110px, 18%, 220px); }
+.corner--bl { left: 0; bottom: -4%; width: clamp(110px, 15%, 280px); }
+.corner--br { right: 0; bottom: -4%; width: clamp(110px, 15%, 280px); }
 
 .cities { position: relative; z-index: 2; margin-top: 8px; color: var(--gold); }
 .cities__row, .cities--inline {
@@ -263,8 +264,14 @@ p { margin: 0; }
   .eyebrow { letter-spacing: .22em; font-size: .72rem; }
   .eyebrow--strong { font-size: .74rem; }
   .cities__row, .cities--inline { gap: 8px; letter-spacing: .2em; font-size: .68rem; }
-  .hero { min-height: auto; padding-top: 64px; }
-  .hero__scene { width: 125vw; margin-top: 40px; }
+  /* Full-screen invitation: text centred in the space above the skyline */
+  .hero { padding-top: 56px; }
+  .hero__content { margin-block: auto; }
+  .hero__scene { width: 135vw; margin-top: 0; }
+  /* Scene is wider than the screen; keep the bouquets at the visible edges */
+  .corner--bl, .corner--br { width: 17%; bottom: -2%; }
+  .corner--bl { left: 13%; }
+  .corner--br { right: 13%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
