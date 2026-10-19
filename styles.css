@@ -19,7 +19,6 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--cream);
@@ -283,7 +282,6 @@ p { margin: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   .panel { animation: none; }
   .btn, .btn .arrow { transition: none; }
 }

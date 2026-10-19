@@ -11,8 +11,8 @@ const HEADERS = ["Submitted at", "Attending", "Full name", "Email", "Phone", "Al
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
-  lock.waitLock(10000);
   try {
+    lock.waitLock(10000);
     const p = (e && e.parameter) || {};
 
     // Honeypot: real guests never fill this hidden field.
@@ -28,7 +28,7 @@ function doPost(e) {
       p.attending,
       clean(p.name),
       clean(p.email),
-      "'" + clean(p.phone), // leading apostrophe keeps the "+91" as text
+      clean(p.phone), // clean() adds the leading apostrophe that keeps "+91" as text
       clean(p.allergies),
       clean(p.requests),
       clean(p.userAgent).slice(0, 200),

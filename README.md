@@ -2,7 +2,7 @@
 
 A static RSVP site (hosted on GitHub Pages) that saves every response as a row in a Google Sheet. You can download the sheet as Excel at any time.
 
-**Live site (after step 3):** https://poojagoel8.github.io/WeddingWebsite/
+**Live site (after step 3):** https://poojagoel8.github.io/PoojaAnirudhRSVP/
 
 ## How it works
 
@@ -36,7 +36,7 @@ Guests who decline are sent straight to the thank-you step.
 
 ### 3. Turn on GitHub Pages
 Repo **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main` / `(root)` → Save**.
-The site goes live at `https://poojagoel8.github.io/WeddingWebsite/` within a minute or two.
+The site goes live at `https://poojagoel8.github.io/PoojaAnirudhRSVP/` within a minute or two.
 
 ### 4. Get the responses into Excel
 In the Google Sheet: **File → Download → Microsoft Excel (.xlsx)**.

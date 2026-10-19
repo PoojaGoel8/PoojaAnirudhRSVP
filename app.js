@@ -6,6 +6,8 @@
   const card = document.querySelector(".card");
   let current = 1;
   let submitted = false;
+  let sending = false;   // blocks a second submit while one is in flight
+  let pickTimer = null;  // pending auto-advance after choosing Yes/No
 
   const attending = () => form.querySelector('input[name="attending"]:checked')?.value;
 
@@ -53,12 +55,15 @@
   // `button` is the Next button on step 3, or null when a guest declines on step 2.
   async function submit(button) {
     if (submitted) return show(4);
+    if (sending) return;
+    sending = true;
     const cfg = window.RSVP_CONFIG || {};
     const data = {
       attending: attending(),
       name: f.name.value.trim(),
       email: f.email.value.trim(),
-      phone: `${f.country.value} ${f.phone.value.trim()}`,
+      // Guests sometimes type the country code themselves; don't add it twice.
+      phone: f.phone.value.trim().startsWith("+") ? f.phone.value.trim() : `${f.country.value} ${f.phone.value.trim()}`,
       allergies: attending() === "Yes" ? f.allergies.value.trim() : "",
       requests: attending() === "Yes" ? f.requests.value.trim() : "",
       website: f.website.value, // honeypot
@@ -91,6 +96,7 @@
       const msg = "Sorry, something went wrong sending your RSVP. Please try again in a moment.";
       setError(errorKey, msg);
     } finally {
+      sending = false;
       if (button) { button.disabled = false; button.innerHTML = label; }
       else choices.forEach((c) => (c.disabled = false));
     }
@@ -99,11 +105,13 @@
   // ---------- events ----------
   // "click" (not "change") so re-picking the same answer after going back still advances
   form.addEventListener("click", (e) => {
-    if (e.target.name === "attending" && !e.target.disabled) {
+    if (e.target.name === "attending" && !e.target.disabled && !sending) {
       setError("attending");
       // Declining submits straight away; accepting continues to additional details.
+      // Only the last click within the short delay counts, so a double-click sends once.
       const choice = e.target.value;
-      setTimeout(() => (choice === "Yes" ? show(3) : submit(null)), 280);
+      clearTimeout(pickTimer);
+      pickTimer = setTimeout(() => (choice === "Yes" ? show(3) : submit(null)), 280);
     }
   });
 
@@ -140,7 +148,7 @@
   function setView() {
     const rsvp = location.hash === "#rsvp";
     document.body.classList.toggle("view-rsvp", rsvp);
-    window.scrollTo({ top: 0, behavior: "instant" });
+    window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", setView);
   setView();
