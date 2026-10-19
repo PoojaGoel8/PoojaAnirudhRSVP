@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
 
@@ -36,8 +36,8 @@
 
   <!-- ============ HERO / INVITATION ============ -->
   <header class="hero" id="invitation">
-    <img class="corner corner--tl" src="assets/flowers-top-left.jpg?v=11" alt="">
-    <img class="corner corner--tr" src="assets/flowers-top-right.jpg?v=11" alt="">
+    <img class="corner corner--tl" src="assets/flowers-top-left.jpg?v=12" alt="">
+    <img class="corner corner--tr" src="assets/flowers-top-right.jpg?v=12" alt="">
 
     <div class="hero__content">
       <p class="eyebrow">Together with our families</p>
@@ -50,9 +50,9 @@
     </div>
 
     <div class="hero__scene">
-      <img class="skyline" src="assets/skyline.jpg?v=11" alt="Watercolour skyline of Singapore, Chennai and Melbourne">
-      <img class="corner corner--bl" src="assets/flowers-bottom-left.jpg?v=11" alt="">
-      <img class="corner corner--br" src="assets/flowers-bottom-right.jpg?v=11" alt="">
+      <img class="skyline" src="assets/skyline.jpg?v=12" alt="Watercolour skyline of Singapore, Chennai and Melbourne">
+      <img class="corner corner--bl" src="assets/flowers-bottom-left.jpg?v=12" alt="">
+      <img class="corner corner--br" src="assets/flowers-bottom-right.jpg?v=12" alt="">
     </div>
 
     <p class="cities">
@@ -87,34 +87,12 @@
           <!-- Step 1 -->
           <div class="panel is-active" data-panel="1">
             <h2 class="title" id="rsvp-title">Guest Details</h2>
-            <p class="lede">Please provide your contact details so we can get in touch<br class="br-wide"> with you regarding our wedding.</p>
+            <p class="lede">Please enter your name so we know who's replying.</p>
             <div class="fields">
               <div class="field field--full">
                 <label for="name">Full Name <span class="req">*</span></label>
                 <input id="name" name="name" type="text" autocomplete="name" placeholder="e.g. John Smith" required>
                 <p class="error" data-error="name" role="alert"></p>
-              </div>
-              <div class="field">
-                <label for="email">Email Address <span class="req">*</span></label>
-                <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="e.g. john@example.com" required>
-                <p class="error" data-error="email" role="alert"></p>
-              </div>
-              <div class="field">
-                <label for="phone">Phone Number <span class="req">*</span></label>
-                <div class="phone">
-                  <select id="country" name="country" aria-label="Country code">
-                    <option value="+91" selected>🇮🇳 +91</option>
-                    <option value="+65">🇸🇬 +65</option>
-                    <option value="+61">🇦🇺 +61</option>
-                    <option value="+1">🇺🇸 +1</option>
-                    <option value="+44">🇬🇧 +44</option>
-                    <option value="+971">🇦🇪 +971</option>
-                    <option value="+60">🇲🇾 +60</option>
-                    <option value="+64">🇳🇿 +64</option>
-                  </select>
-                  <input id="phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="e.g. 98765 43210" required>
-                </div>
-                <p class="error" data-error="phone" role="alert"></p>
               </div>
             </div>
             <div class="actions">
@@ -145,8 +123,30 @@
           <!-- Step 3 -->
           <div class="panel" data-panel="3" hidden>
             <h2 class="title">Additional Details</h2>
-            <p class="lede">Anything else we should know? Let us know about allergies, dietary needs<br class="br-wide"> or anything we can do to make your day comfortable.</p>
+            <p class="lede">Please share your contact details so we can keep you updated,<br class="br-wide"> and let us know about allergies or anything else we can help with.</p>
             <div class="fields">
+              <div class="field">
+                <label for="email">Email Address <span class="req">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="e.g. john@example.com" required>
+                <p class="error" data-error="email" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="phone">Phone Number <span class="req">*</span></label>
+                <div class="phone">
+                  <select id="country" name="country" aria-label="Country code">
+                    <option value="+91" selected>🇮🇳 +91</option>
+                    <option value="+65">🇸🇬 +65</option>
+                    <option value="+61">🇦🇺 +61</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+60">🇲🇾 +60</option>
+                    <option value="+64">🇳🇿 +64</option>
+                  </select>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="e.g. 98765 43210" required>
+                </div>
+                <p class="error" data-error="phone" role="alert"></p>
+              </div>
               <div class="field field--full">
                 <label for="allergies">Allergies <span class="opt">(optional)</span></label>
                 <textarea id="allergies" name="allergies" rows="3" placeholder="e.g. Nuts, shellfish, gluten, dairy, etc."></textarea>
@@ -180,7 +180,7 @@
           </div>
         </form>
 
-        <img class="card__skyline" src="assets/skyline.jpg?v=11" alt="" aria-hidden="true">
+        <img class="card__skyline" src="assets/skyline.jpg?v=12" alt="" aria-hidden="true">
       </div>
     </section>
 
@@ -191,7 +191,7 @@
     <p class="footer__date">28 – 29 January 2027 · Chennai, India</p>
   </footer>
 
-  <script src="config.js?v=11"></script>
-  <script src="app.js?v=11"></script>
+  <script src="config.js?v=12"></script>
+  <script src="app.js?v=12"></script>
 </body>
 </html>

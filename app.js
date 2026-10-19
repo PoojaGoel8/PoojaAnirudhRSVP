@@ -39,15 +39,21 @@
     if (field) field.classList.toggle("has-error", !!msg);
   }
 
-  function validateDetails() {
-    const name = f.name.value.trim();
+  // Step 1 only asks for a name; contact details are asked on step 3, for guests who accept.
+  function validateName() {
+    const ok = f.name.value.trim().length >= 2;
+    setError("name", ok ? "" : "Please enter your full name.");
+    if (!ok) f.name.focus();
+    return ok;
+  }
+
+  function validateContact() {
     const email = f.email.value.trim();
     const phone = f.phone.value.replace(/[^\d]/g, "");
     let ok = true;
-    if (name.length < 2) { setError("name", "Please enter your full name."); ok = false; } else setError("name");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { setError("email", "Please enter a valid email address."); ok = false; } else setError("email");
     if (phone.length < 6 || phone.length > 15) { setError("phone", "Please enter a valid phone number."); ok = false; } else setError("phone");
-    if (!ok) form.querySelector(".has-error input")?.focus();
+    if (!ok) panels[2].querySelector(".has-error input")?.focus();
     return ok;
   }
 
@@ -58,14 +64,17 @@
     if (sending) return;
     sending = true;
     const cfg = window.RSVP_CONFIG || {};
+    const yes = attending() === "Yes";
+    const rawPhone = f.phone.value.trim();
     const data = {
       attending: attending(),
       name: f.name.value.trim(),
-      email: f.email.value.trim(),
+      // Contact details and extras are only collected from guests who accept.
+      email: yes ? f.email.value.trim() : "",
       // Guests sometimes type the country code themselves; don't add it twice.
-      phone: f.phone.value.trim().startsWith("+") ? f.phone.value.trim() : `${f.country.value} ${f.phone.value.trim()}`,
-      allergies: attending() === "Yes" ? f.allergies.value.trim() : "",
-      requests: attending() === "Yes" ? f.requests.value.trim() : "",
+      phone: !yes ? "" : rawPhone.startsWith("+") ? rawPhone : `${f.country.value} ${rawPhone}`,
+      allergies: yes ? f.allergies.value.trim() : "",
+      requests: yes ? f.requests.value.trim() : "",
       website: f.website.value, // honeypot
       userAgent: navigator.userAgent,
     };
@@ -123,10 +132,13 @@
     }
     if (next) {
       if (current === 1) {
-        if (!validateDetails()) return;
+        if (!validateName()) return;
         return show(2);
       }
-      if (current === 3) return submit(next);
+      if (current === 3) {
+        if (!validateContact()) return;
+        return submit(next);
+      }
     }
   });
 

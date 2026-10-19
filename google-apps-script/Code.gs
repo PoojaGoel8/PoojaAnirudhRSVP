@@ -18,7 +18,8 @@ function doPost(e) {
     // Honeypot: real guests never fill this hidden field.
     if (p.website) return json({ result: "success" });
 
-    if (!p.name || !p.email || (p.attending !== "Yes" && p.attending !== "No")) {
+    // Guests who decline only give their name; email is required from guests who accept.
+    if (!p.name || (p.attending !== "Yes" && p.attending !== "No") || (p.attending === "Yes" && !p.email)) {
       return json({ result: "error", error: "Missing required fields" });
     }
 
@@ -44,7 +45,7 @@ function doPost(e) {
 
 // Visiting the /exec URL in a browser just confirms the script is live.
 function doGet() {
-  return json({ result: "ok", message: "RSVP endpoint is running" });
+  return json({ result: "ok", message: "RSVP endpoint is running", version: 2 });
 }
 
 function getSheet() {
