@@ -20,7 +20,7 @@
       if (n === step) d.setAttribute("aria-current", "step");
       else d.removeAttribute("aria-current");
     });
-    // Guests who decline skip the allergies step.
+    // Guests who decline skip the additional details step.
     dots[2].style.opacity = attending() === "No" ? ".45" : "";
     if (scroll && card.getBoundingClientRect().top < 0) {
       card.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -59,6 +59,7 @@
       email: f.email.value.trim(),
       phone: `${f.country.value} ${f.phone.value.trim()}`,
       allergies: attending() === "Yes" ? f.allergies.value.trim() : "",
+      requests: attending() === "Yes" ? f.requests.value.trim() : "",
       website: f.website.value, // honeypot
       userAgent: navigator.userAgent,
     };

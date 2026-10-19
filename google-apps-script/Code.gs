@@ -7,7 +7,7 @@
  */
 
 const SHEET_NAME = "RSVPs";
-const HEADERS = ["Submitted at", "Attending", "Full name", "Email", "Phone", "Allergies / dietary", "Device"];
+const HEADERS = ["Submitted at", "Attending", "Full name", "Email", "Phone", "Allergies / dietary", "Additional requests", "Device"];
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
@@ -30,6 +30,7 @@ function doPost(e) {
       clean(p.email),
       "'" + clean(p.phone), // leading apostrophe keeps the "+91" as text
       clean(p.allergies),
+      clean(p.requests),
       clean(p.userAgent).slice(0, 200),
     ]);
 
