@@ -132,18 +132,27 @@ p { margin: 0; }
 /* ---------- RSVP CARD ---------- */
 .rsvp { padding: clamp(40px, 8vw, 96px) 16px; }
 .card {
+  --card-pad: clamp(20px, 6vw, 72px);
   position: relative;
   max-width: 820px;
   margin: 0 auto;
   min-height: 560px;
-  padding: 36px clamp(20px, 6vw, 72px) 120px;
+  display: flex; flex-direction: column;
+  padding: 36px var(--card-pad) 0;
   border-radius: 6px;
   box-shadow: 0 1px 0 rgba(0,0,0,.03), 0 24px 60px -30px rgba(86, 64, 48, .35);
   overflow: hidden;
   text-align: center;
 }
-.corner--card-bl { left: 0; bottom: 0; width: clamp(90px, 18vw, 150px); }
-.corner--card-br { right: 0; bottom: 0; width: clamp(90px, 18vw, 150px); }
+#rsvp-form { padding-bottom: 20px; }
+/* Skyline runs edge to edge along the bottom of every RSVP step */
+.card__skyline {
+  margin: auto calc(-1 * var(--card-pad)) 0;
+  width: calc(100% + 2 * var(--card-pad));
+  max-width: none;
+  mix-blend-mode: multiply;
+  pointer-events: none; user-select: none;
+}
 
 .stepper {
   list-style: none; margin: 0 auto 46px; padding: 0;
@@ -258,7 +267,6 @@ p { margin: 0; }
   .fields { grid-template-columns: 1fr; }
   .choice__box { min-width: 0; width: 100%; }
   .choices { flex-direction: column; max-width: 340px; margin: 0 auto; }
-  .card { padding-bottom: 110px; }
   .stepper { margin-bottom: 34px; }
   .step__label { font-size: .64rem; }
   .eyebrow { letter-spacing: .22em; font-size: .72rem; }
