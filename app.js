@@ -10,7 +10,7 @@
   const attending = () => form.querySelector('input[name="attending"]:checked')?.value;
 
   // ---------- navigation ----------
-  function show(step, { scroll = true } = {}) {
+  function show(step, { scroll = true, focus = true } = {}) {
     current = step;
     panels.forEach((p) => (p.hidden = Number(p.dataset.panel) !== step));
     dots.forEach((d) => {
@@ -25,8 +25,8 @@
     if (scroll && card.getBoundingClientRect().top < 0) {
       card.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    const focusTarget = panels[step - 1].querySelector("input:not([type=radio]), textarea, .title");
-    if (focusTarget && step !== 1) focusTarget.focus({ preventScroll: true });
+    const focusTarget = panels[step - 1].querySelector("input:not([type=radio]):not(.hp), textarea");
+    if (focus && focusTarget) focusTarget.focus({ preventScroll: true });
   }
 
   // ---------- validation ----------
@@ -50,6 +50,7 @@
   }
 
   // ---------- submit ----------
+  // `button` is the Next button on step 3, or null when a guest declines on step 2.
   async function submit(button) {
     if (submitted) return show(4);
     const cfg = window.RSVP_CONFIG || {};
@@ -64,10 +65,12 @@
       userAgent: navigator.userAgent,
     };
 
-    setError("submit");
-    const label = button.innerHTML;
-    button.disabled = true;
-    button.textContent = "Sending…";
+    const errorKey = button ? "submit" : "attending";
+    const choices = [...form.querySelectorAll('input[name="attending"]')];
+    setError(errorKey);
+    const label = button?.innerHTML;
+    if (button) { button.disabled = true; button.textContent = "Sending…"; }
+    else { choices.forEach((c) => (c.disabled = true)); setError("attending", "Sending…"); }
 
     try {
       if (!cfg.scriptUrl) {
@@ -86,19 +89,21 @@
     } catch (err) {
       console.error("[RSVP] submit failed", err);
       const msg = "Sorry, something went wrong sending your RSVP. Please try again in a moment.";
-      if (current === 2) setError("phone", msg); else setError("submit", msg);
+      setError(errorKey, msg);
     } finally {
-      button.disabled = false;
-      button.innerHTML = label;
+      if (button) { button.disabled = false; button.innerHTML = label; }
+      else choices.forEach((c) => (c.disabled = false));
     }
   }
 
   // ---------- events ----------
   // "click" (not "change") so re-picking the same answer after going back still advances
   form.addEventListener("click", (e) => {
-    if (e.target.name === "attending") {
+    if (e.target.name === "attending" && !e.target.disabled) {
       setError("attending");
-      setTimeout(() => show(2), 280);
+      // Declining submits straight away; accepting continues to additional details.
+      const choice = e.target.value;
+      setTimeout(() => (choice === "Yes" ? show(3) : submit(null)), 280);
     }
   });
 
@@ -109,10 +114,9 @@
       show(current - 1);
     }
     if (next) {
-      if (current === 2) {
+      if (current === 1) {
         if (!validateDetails()) return;
-        if (attending() === "No") return submit(next);
-        return show(3);
+        return show(2);
       }
       if (current === 3) return submit(next);
     }
@@ -141,5 +145,5 @@
   window.addEventListener("hashchange", setView);
   setView();
 
-  show(1, { scroll: false });
+  show(1, { scroll: false, focus: false });
 })();

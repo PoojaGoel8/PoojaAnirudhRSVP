@@ -10,8 +10,8 @@ A static RSVP site (hosted on GitHub Pages) that saves every response as a row i
 Guest's phone ──▶ GitHub Pages (this repo) ──POST──▶ Google Apps Script ──▶ Google Sheet ("RSVPs" tab)
 ```
 
-RSVP flow: **1. RSVP** (yes / no) → **2. Details** (name, email, phone) → **3. Additional details** (allergies, additional requests) → **4. Thank you**.
-Guests who decline skip the additional details step.
+RSVP flow: **1. Details** (name, email, phone) → **2. RSVP** (yes / no) → **3. Additional details** (allergies, additional requests) → **4. Thank you**.
+Guests who decline are sent straight to the thank-you step.
 
 ## Setup (about 10 minutes)
 

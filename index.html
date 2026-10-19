@@ -7,12 +7,12 @@
   <meta name="description" content="Together with our families, Anirudh & Pooja invite you to celebrate our wedding. 28–29 January 2027, Chennai, India.">
   <meta property="og:title" content="Anirudh & Pooja · Wedding RSVP">
   <meta property="og:description" content="28–29 January 2027 · Chennai, India. Please RSVP.">
-  <meta property="og:image" content="assets/skyline.jpg?v=8">
+  <meta property="og:image" content="assets/skyline.jpg?v=9">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 28C6 21 3 15 5 10c2-5 8-6 11-1 3-5 9-4 11 1 2 5-1 11-11 18z' fill='%23a3475a'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 
@@ -35,8 +35,8 @@
 
   <!-- ============ HERO / INVITATION ============ -->
   <header class="hero" id="invitation">
-    <img class="corner corner--tl" src="assets/flowers-top-left.jpg?v=8" alt="">
-    <img class="corner corner--tr" src="assets/flowers-top-right.jpg?v=8" alt="">
+    <img class="corner corner--tl" src="assets/flowers-top-left.jpg?v=9" alt="">
+    <img class="corner corner--tr" src="assets/flowers-top-right.jpg?v=9" alt="">
 
     <div class="hero__content">
       <p class="eyebrow">Together with our families</p>
@@ -49,9 +49,9 @@
     </div>
 
     <div class="hero__scene">
-      <img class="skyline" src="assets/skyline.jpg?v=8" alt="Watercolour skyline of Singapore, Chennai and Melbourne">
-      <img class="corner corner--bl" src="assets/flowers-bottom-left.jpg?v=8" alt="">
-      <img class="corner corner--br" src="assets/flowers-bottom-right.jpg?v=8" alt="">
+      <img class="skyline" src="assets/skyline.jpg?v=9" alt="Watercolour skyline of Singapore, Chennai and Melbourne">
+      <img class="corner corner--bl" src="assets/flowers-bottom-left.jpg?v=9" alt="">
+      <img class="corner corner--br" src="assets/flowers-bottom-right.jpg?v=9" alt="">
     </div>
 
     <p class="cities">
@@ -71,12 +71,12 @@
     <section class="rsvp" id="rsvp" aria-labelledby="rsvp-title">
       <a class="link-back link-back--top" href="#invitation">← Back to invitation</a>
       <div class="card">
-        <img class="corner corner--card-bl" src="assets/flowers-bottom-left.jpg?v=8" alt="">
-        <img class="corner corner--card-br" src="assets/flowers-bottom-right.jpg?v=8" alt="">
+        <img class="corner corner--card-bl" src="assets/flowers-bottom-left.jpg?v=9" alt="">
+        <img class="corner corner--card-br" src="assets/flowers-bottom-right.jpg?v=9" alt="">
 
         <ol class="stepper" aria-label="RSVP progress">
-          <li class="step is-active" data-step-dot="1"><span class="step__dot">1</span><span class="step__label">RSVP</span></li>
-          <li class="step" data-step-dot="2"><span class="step__dot">2</span><span class="step__label">Details</span></li>
+          <li class="step is-active" data-step-dot="1"><span class="step__dot">1</span><span class="step__label">Details</span></li>
+          <li class="step" data-step-dot="2"><span class="step__dot">2</span><span class="step__label">RSVP</span></li>
           <li class="step" data-step-dot="3"><span class="step__dot">3</span><span class="step__label">Additional</span></li>
           <li class="step" data-step-dot="4"><span class="step__dot">4</span><span class="step__label">Confirmation</span></li>
         </ol>
@@ -87,25 +87,7 @@
 
           <!-- Step 1 -->
           <div class="panel is-active" data-panel="1">
-            <h2 class="title" id="rsvp-title">Will you be joining us?</h2>
-            <p class="lede">Please let us know if you can attend our wedding.</p>
-            <div class="choices" role="radiogroup" aria-label="Attendance">
-              <label class="choice">
-                <input type="radio" name="attending" value="Yes">
-                <span class="choice__box"><span class="choice__check" aria-hidden="true">✓</span>Yes, I'll be there!</span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="attending" value="No">
-                <span class="choice__box"><span class="choice__check" aria-hidden="true">✓</span>Sorry, I can't make it</span>
-              </label>
-            </div>
-            <p class="error" data-error="attending" role="alert"></p>
-            <svg class="divider divider--panel" aria-hidden="true"><use href="#divider"/></svg>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="panel" data-panel="2" hidden>
-            <h2 class="title">Guest Details</h2>
+            <h2 class="title" id="rsvp-title">Guest Details</h2>
             <p class="lede">Please provide your contact details so we can get in touch<br class="br-wide"> with you regarding our wedding.</p>
             <div class="fields">
               <div class="field field--full">
@@ -137,8 +119,27 @@
               </div>
             </div>
             <div class="actions">
-              <button type="button" class="link-back" data-back>← Back</button>
               <button type="button" class="btn" data-next>Next <span class="arrow" aria-hidden="true">→</span></button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="panel" data-panel="2" hidden>
+            <h2 class="title">Will you be joining us?</h2>
+            <p class="lede">Please let us know if you can attend our wedding.</p>
+            <div class="choices" role="radiogroup" aria-label="Attendance">
+              <label class="choice">
+                <input type="radio" name="attending" value="Yes">
+                <span class="choice__box"><span class="choice__check" aria-hidden="true">✓</span>Yes, I'll be there!</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="attending" value="No">
+                <span class="choice__box"><span class="choice__check" aria-hidden="true">✓</span>Sorry, I can't make it</span>
+              </label>
+            </div>
+            <p class="error" data-error="attending" role="alert"></p>
+            <div class="actions">
+              <button type="button" class="link-back" data-back>← Back</button>
             </div>
           </div>
 
@@ -189,7 +190,7 @@
     <p class="footer__date">28 – 29 January 2027 · Chennai, India</p>
   </footer>
 
-  <script src="config.js?v=8"></script>
-  <script src="app.js?v=8"></script>
+  <script src="config.js?v=9"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>
